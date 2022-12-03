@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<div id="bor">
+<body>
+    <h2><center>Expense Calculator</center></h2>
+      <div class="container">
+        <h2>Balance</h2>
+        <h1 id="balance">$00</h1>
+        <div class="inc_exp_container">
+            <div>
+                <h4>Income</h4>
+                <p id="money_plus" class="money_plus">$00</p>
+                
+            </div>
+            <div>
+                <h4>Expense</h4>
+                <p id="money_minus" class="money_minus">$000</p>
+            </div>
+        </div>
+        <h3>History</h3>
+        <hr>
+        <ul id="list" class="list">
+                <button class="delete_btn">x</button>
+            </li>
+        </ul>
+        <h3>Add new Transcation</h3><hr>
+        <form id="form">
+            <div class="form_control">
+                <label for="text"><b>Things</b></label>
+                <input type="text" id="text" placeholder="Enter text....">
+            </div>
+            <div class="form_control">
+                <label for="amount"><b>Amount</b></label>
+                <input type="number" id="amount"  placeholder="Enter cash....">
+            </div>
+            <button class="btn">All transactions</button>
+        </form>
+      </div>
+</body>
+</div>
+<script src="script.js"></script>
+</html>
