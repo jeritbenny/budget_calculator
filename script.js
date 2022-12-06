@@ -11,7 +11,12 @@ const text = document.getElementById('text');
 const amount = document.getElementById('amount');
 
 
-let transactions = [];
+
+const localStorageTransaction = JSON.parse(localStorage.getItem("transactions"));
+let transactions = localStorage.getItem("transactions") !== null ? localStorageTransaction:[];
+
+
+
 //add transaction
 function addTransaction(e){
     e.preventDefault();
@@ -27,6 +32,7 @@ function addTransaction(e){
             };
             transactions.push(transaction);
             addTransactionDOM(transaction);
+            updateLocalStorage();
             updateValues();
             text.value ="";
             amount.value = "";
@@ -50,9 +56,15 @@ function addTransactionDOM(transaction) {
     item.innerHTML =`
           ${transaction.text}<span>${sign}${Math.abs(transaction.amount)}
           </span>
-          <button class ="delete_btn" onclick="">x</button>
+          <button class ="delete_btn" onclick="removeTransaction(${transaction.id})">x</button>
     `;
     list.appendChild(item);
+}
+//remove transaction
+function removeTransaction(id){
+    transactions = transactions.filter(transaction => transaction.id !== id);
+    updateLocalStorage();
+    Init();
 }
 addTransactionDOM(transactions);
 //Update updateValues
@@ -64,6 +76,11 @@ function updateValues() {
     balance.innerText=` $ ${total}`;
     money_plus.innerText = `$ ${income}`;
     money_minus.innerText =`$ ${expense}`;
+}
+
+//update localstorage
+function updateLocalStorage(){
+    localStorage.setItem("transactions",JSON.stringify(transactions));
 }
 //Init app
 function Init(){
